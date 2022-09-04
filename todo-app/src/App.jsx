@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "./CONTEXT/TodoContext";
-import TodoComponent from "./COMPONENTS/TodoComponent";
+import TodoList from "./COMPONENTS/TodoList";
+import FooterComponent from "./COMPONENTS/FooterComponent";
 import "./App.css";
 
 function App() {
@@ -21,24 +22,13 @@ function App() {
       e.target.value = null;
     }
   }
-
-  //if(select=="All"){
-  // 	todo.forEach((element,index) => {
-  // 		showedTodoList.push(<TodoComponent key={index} ID={index} isComplited={element.isComplited} todoValue={element.todoValue}></TodoComponent>)
-  // 	});
-  // }else if(select=="Active"){
-  // 	todo.forEach((element,index) => {
-  // 		if(element.isComplited){
-  // 			showedTodoList.push(<TodoComponent key={index} ID={index} isComplited={element.isComplited} todoValue={element.todoValue}></TodoComponent>)
-  // 		}
-  // 	});
-  // }else if(select=="Completed"){
-  // 	todo.forEach((element,index) => {
-  // 		if(!element.isComplited){
-  // 			showedTodoList.push(<TodoComponent key={index} ID={index} isComplited={element.isComplited} todoValue={element.todoValue}></TodoComponent>)
-  // 		}
-  // 	});
-  // }
+  //this function clear completed todos
+  function clearcompleted() {
+    var clearedTodoList = todo.filter((element, index) => {
+      return element.isComplited == false;
+    });
+    setTodo([...clearedTodoList]);
+  }
 
   return (
     <>
@@ -56,89 +46,19 @@ function App() {
         <section className="main">
           <input className="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-
-          <ul className="todo-list">
-            {filteredByName.toString() === "All"
-              ? todo.map((element, index) => (
-                  <TodoComponent
-                    key={index}
-                    ID={index}
-                    isComplited={element.isComplited}
-                    todoValue={element.todoValue}
-                  ></TodoComponent>
-                ))
-              : filteredByName.toString() === "Completed"
-              ? todo
-                  .filter((element) => element.isComplited == true)
-                  .map((element, index) => (
-                    <TodoComponent
-                      key={index}
-                      ID={index}
-                      isComplited={element.isComplited}
-                      todoValue={element.todoValue}
-                    ></TodoComponent>
-                  ))
-              : filteredByName.toString() === "Active"
-              ? todo
-                  .filter((element) => element.isComplited == false)
-                  .map((element, index) => (
-                    <TodoComponent
-                      key={index}
-                      ID={index}
-                      isComplited={element.isComplited}
-                      todoValue={element.todoValue}
-                    ></TodoComponent>
-                  ))
-              : false}
-
-            {filteredByName}
-          </ul>
+          <TodoList todo={todo} filteredByName={filteredByName} />
         </section>
 
-        <footer className="footer">
-          <span className="todo-count">
-            <strong>2</strong>
-            items left
-          </span>
-
-          <ul className="filters">
-            <li>
-              <a
-                href="#/"
-                onClick={() => {
-                  setFilteredByName("All");
-                }}
-                className={filteredByName ? "All" : ""}
-              >
-                All
-              </a>
-            </li>
-            <li>
-              <a
-                href="#/"
-                onClick={() => {
-                  setFilteredByName("Active");
-                }}
-                className={filteredByName ? "Active" : ""}
-              >
-                Active
-              </a>
-            </li>
-            <li>
-              <a
-                href="#/"
-                onClick={() => {
-                  setFilteredByName("Completed");
-                }}
-                className={filteredByName ? "Completed" : ""}
-              >
-                Completed
-              </a>
-            </li>
-          </ul>
-
-          <button className="clear-completed">Clear completed</button>
-        </footer>
+        <FooterComponent
+          todo={todo}
+          filteredByName={filteredByName}
+          emitFilteredByName={(e) => {
+            setFilteredByName(e);
+          }}
+          emitClearCompleted={() => {
+            clearcompleted();
+          }}
+        />
       </section>
 
       <footer className="info">

@@ -21,7 +21,13 @@ function TodoComponent({ ID, todoValue, isComplited }) {
           onChange={todoCheck}
         />
         <label>{todoValue}</label>
-        <button className="destroy"></button>
+        <button
+          className="destroy"
+          onClick={() => {
+            todo.splice(ID, 1);
+            setTodo([...todo]);
+          }}
+        ></button>
       </div>
     </li>
   );
