@@ -1,0 +1,22 @@
+.weather-container{
+    text-align: center;
+    height: 170px;
+    width: 120px;
+    border: 1px solid #fefefe;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.weather-container:hover{
+border: 1px solid #cecece;
+}
+
+.weather-img{
+    width: 70%;
+ 
+    
+}
+.weather-desp{
+    flex: 1;
+}

@@ -1,0 +1,12 @@
+.city-container{
+    background-color: aliceblue;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.city-container select{
+    width: 50%;
+    height: 60%;
+    border-radius: 6px;
+}
