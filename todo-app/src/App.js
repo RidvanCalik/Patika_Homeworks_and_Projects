@@ -16,7 +16,7 @@ function App() {
           isComplited: false
           }] 
       )
-       console.log(todo)
+  
      e.target.value=null;
     }
    
@@ -42,7 +42,7 @@ function App() {
 		<ul className="todo-list">
 
        {todo && todo.map((todo,index)=>{
-        return <TodoComponent key={index} isChecked={todo.isComplited} todoValue={todo.todoValue}></TodoComponent>
+        return <TodoComponent key={index} ID={index} isComplited={todo.isComplited} todoValue={todo.todoValue}></TodoComponent>
       })} 
 			<li className="completed">
 				<div className="view">

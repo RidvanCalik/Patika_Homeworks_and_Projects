@@ -8,9 +8,11 @@ function TodoProvider({ children }) {
   //     todoValue: "",
   //     isComplited: false,
   //   };
-  var todoState = useState([]);
+  var [todo, setTodo] = useState([]);
   return (
-    <TodoContext.Provider value={todoState}>{children}</TodoContext.Provider>
+    <TodoContext.Provider value={[todo, setTodo]}>
+      {children}
+    </TodoContext.Provider>
   );
 }
 
