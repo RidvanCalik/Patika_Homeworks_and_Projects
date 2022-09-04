@@ -3,3 +3,5 @@
 
 ## run
 `npm start`
+
+![ss](ss1.png)

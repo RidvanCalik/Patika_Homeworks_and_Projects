@@ -2,11 +2,10 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { CityContext } from "CONTEXTS/CityContext.js";
 import SingleWeather from "../SingleWeather";
-
+import API_KEY from "API_KEY";
 import "./WeatherDisplayArea.css";
 
 function WeatherDisplayArea() {
-  const apiKey = "bb9901e86210439fbf8bbfa9f17bccd3";
   var [cityname] = useContext(CityContext);
   var [weather, setWeather] = useState(null);
 
@@ -17,7 +16,7 @@ function WeatherDisplayArea() {
         "https://api.weatherbit.io/v2.0/forecast/daily?city=" +
           cityname +
           "&country=TR&lang=TR&key=" +
-          apiKey +
+          API_KEY +
           ""
       )
       .then((e) => {
@@ -37,7 +36,7 @@ function WeatherDisplayArea() {
               "&lon=" +
               long +
               "&country=TR&lang=TR&key=" +
-              apiKey +
+              API_KEY +
               ""
           )
           .then((e) => {
