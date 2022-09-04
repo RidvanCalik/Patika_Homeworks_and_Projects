@@ -14,7 +14,12 @@ function TodoComponent({ ID, todoValue, isComplited }) {
   return (
     <li className={isComplited ? "completed" : ""}>
       <div className="view">
-        <input className="toggle" type="checkbox" onChange={todoCheck} />
+        <input
+          className="toggle"
+          type="checkbox"
+          checked={isComplited}
+          onChange={todoCheck}
+        />
         <label>{todoValue}</label>
         <button className="destroy"></button>
       </div>
