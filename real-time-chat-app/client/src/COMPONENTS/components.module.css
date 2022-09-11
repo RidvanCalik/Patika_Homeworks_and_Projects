@@ -1,0 +1,10 @@
+.ChatList{
+    height: 70vh;
+    width: 500px;
+    background-color: aliceblue;
+}
+.ChatForm{
+    height: 5vh;
+    width: 500px;
+   
+}
