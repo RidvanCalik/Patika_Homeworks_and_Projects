@@ -21,7 +21,7 @@ app.get("/login", (req,res)=>{
         let user =await userModel.find({ userName: 'bahadır'}).exec();
 
     }
-    findUser()
+   
     res.send(process.env.MONGO_DB_URL)
 })
 
